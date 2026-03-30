@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "nbutils",
+  "version": "1.21.11",
+  "name": "nbutils",
+  "description": "nbutils mod converted to Fabric from NeoForge.",
+  "authors": ["melis", "MCreator"],
+  "contact": {
+    "homepage": "https://mcreator.net",
+    "issues": "https://mcreator.net"
+  },
+  "license": "Academic Free License v3.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.mcreator.nbutils.NbutilsMod"],
+    "client": ["net.mcreator.nbutils.NbutilsModClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.8",
+    "fabric": "*",
+    "minecraft": "1.21.1"
+  }
+}

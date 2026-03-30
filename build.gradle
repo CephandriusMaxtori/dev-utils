@@ -1,52 +1,45 @@
 plugins {
-    id 'eclipse'
-    id 'net.neoforged.gradle' version '[6.0.18,6.2)'
+    id 'fabric-loom' version '1.9.1'
+    id 'maven-publish'
+    id 'java'
 }
 
-version = '1.0'
-group = 'com.yourname.modid'
-archivesBaseName = 'modid'
+version = '1.21.11'
+group = 'net.mcreator.nbutils'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
-minecraft {
-    mappings channel: 'official', version: '1.20.1'
+ext {
+    minecraft_version = '1.21.1'
+    yarn_mappings = '1.21.1+build.3'
+    loader_version = '0.15.8'
+    fabric_version = '0.90.0+1.21.1'
+}
 
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    copyIdeResources = true
-
+loom {
     runs {
         client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+            runDir = 'run'
+            property 'fabric.log.level', 'debug'
         }
-
         server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
+            runDir = 'run'
+            property 'fabric.log.level', 'debug'
         }
     }
 }
 
 dependencies {
-    minecraft 'net.neoforged:forge:1.20.1-47.1.65'
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+
+    // Fabric API (The equivalent to much of NeoForge's built-in functionality)
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
 }
 
 tasks.withType(JavaCompile).configureEach {

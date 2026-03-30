@@ -4,21 +4,13 @@
  */
 package net.mcreator.nbutils.init;
 
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.api.distmarker.Dist;
-
-import net.minecraft.client.gui.screens.MenuScreens;
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 
 import net.mcreator.nbutils.client.gui.DimsScreen;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class NbutilsModScreens {
-	@SubscribeEvent
-	public static void clientLoad(FMLClientSetupEvent event) {
-		event.enqueueWork(() -> {
-			MenuScreens.register(NbutilsModMenus.DIMS.get(), DimsScreen::new);
-		});
+	public static void register() {
+		// Screen registration for Fabric
+		// ScreenRegistry.register(NbutilsModMenus.DIMS, DimsScreen::new);
 	}
 }

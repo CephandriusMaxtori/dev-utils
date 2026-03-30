@@ -6,46 +6,24 @@ package net.mcreator.nbutils.init;
 
 import org.lwjgl.glfw.GLFW;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.api.distmarker.Dist;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.KeyMapping;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.network.chat.Component;
 
-import net.mcreator.nbutils.network.OpenMessage;
-import net.mcreator.nbutils.NbutilsMod;
+import net.mcreator.nbutils.procedures.OpenOnKeyPressedProcedure;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class NbutilsModKeyMappings {
-	public static final KeyMapping OPEN = new KeyMapping("key.nbutils.open", GLFW.GLFW_KEY_H, "key.categories.gameplay") {
-		private boolean isDownOld = false;
+	public static final KeyBinding OPEN = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.nbutils.open", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_H, "category.nbutils"));
 
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				NbutilsMod.PACKET_HANDLER.sendToServer(new OpenMessage(0, 0));
-				OpenMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+	public static void init() {
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			if (client.player != null && OPEN.wasPressed()) {
+				OpenOnKeyPressedProcedure.execute(client.level, client.player.getX(), client.player.getY(), client.player.getZ(), client.player);
 			}
-			isDownOld = isDown;
-		}
-	};
-
-	@SubscribeEvent
-	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
-		event.register(OPEN);
-	}
-
-	@Mod.EventBusSubscriber({Dist.CLIENT})
-	public static class KeyEventListener {
-		@SubscribeEvent
-		public static void onClientTick(TickEvent.ClientTickEvent event) {
-			if (Minecraft.getInstance().screen == null) {
-				OPEN.consumeClick();
-			}
-		}
+		});
 	}
 }
