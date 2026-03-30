@@ -1,5 +1,6 @@
 {
   "gui.nbutils.dims.button_redstone": "Redstone",
+  "key.nbutils.open": "Open",
   "gui.nbutils.dims.label_wm": "WM",
   "gui.nbutils.dims.button_hub": "Hub",
   "gui.nbutils.dims.button_repo": "REPO"

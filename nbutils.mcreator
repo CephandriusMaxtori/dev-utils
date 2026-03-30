@@ -1,0 +1,171 @@
+{
+  "mod_elements": [
+    {
+      "name": "Dims",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dims",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/nbutils/world/inventory/DimsMenu.java",
+          "src/main/java/net/mcreator/nbutils/client/gui/DimsScreen.java"
+        ]
+      }
+    },
+    {
+      "name": "Hub",
+      "type": "procedure",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hub",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/nbutils/procedures/HubProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Repo",
+      "type": "procedure",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "repo",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/nbutils/procedures/RepoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OpenOnKeyPressed",
+      "type": "procedure",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "open_on_key_pressed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/nbutils/procedures/OpenOnKeyPressedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Open",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "open",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/nbutils/network/OpenMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "Tpdim",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tpdim",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/nbutils/command/TpdimCommand.java"
+        ]
+      }
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "language_map": {
+    "en_us": {
+      "gui.nbutils.dims.button_redstone": "Redstone",
+      "key.nbutils.open": "Open",
+      "gui.nbutils.dims.label_wm": "WM",
+      "gui.nbutils.dims.button_hub": "Hub",
+      "gui.nbutils.dims.button_repo": "REPO"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "nbutils",
+    "modName": "nbutils",
+    "version": "1.0.0",
+    "author": "melis, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Academic Free License v3.0",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "neoforge-1.20.1",
+    "modElementsPackage": "net.mcreator.nbutils",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202300336712
+}
